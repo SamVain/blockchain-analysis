@@ -1,3 +1,7 @@
+
+import "ka-table/style.scss";
+import "./style.scss";
+
 import React, { useState } from "react";
 
 import FilterControl from 'react-filter-control';
