@@ -6,6 +6,8 @@ import { kaReducer, Table } from "ka-table";
 import { loadData, updateData } from "ka-table/actionCreators";
 import { ActionType, DataType, SortingMode, PagingPosition } from "ka-table/enums";
 import { filterData } from '../filterData';
+import Container from 'react-bootstrap/Container'
+
 
 const tablePropsInit = {
     columns: [
@@ -117,7 +119,7 @@ function DataView() {
     };
 
     return (
-        <>
+        <Container>
             <div>
                 BTC: {btc}
             </div>
@@ -135,7 +137,7 @@ function DataView() {
                     />
                 </div>
             </div>
-        </>
+        </Container>
     );
 };
 

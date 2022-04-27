@@ -1,17 +1,13 @@
 import React from "react";
+import Container from 'react-bootstrap/Container'
 
 const About = () => {
     return (
-        <div
-            style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                height: '100vh'
-            }}
-        >
-            <h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem, totam.</h1>
-        </div>
+        <Container>
+            <div>
+                <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem, totam.</h3>
+            </div>
+        </Container>
     );
 };
 

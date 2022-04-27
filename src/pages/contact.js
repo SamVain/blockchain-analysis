@@ -1,17 +1,13 @@
 import React from 'react'
+import Container from 'react-bootstrap/Container'
 
 function Contact() {
     return (
-        <div
-            style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
-                height: '100vh'
-            }}
-        >
-           <h1>Contact Us</h1> 
-        </div>
+        <Container>
+            <div>
+                <h3>Contact Us</h3> 
+            </div>
+        </Container>
     );
 };
 

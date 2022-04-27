@@ -1,10 +1,13 @@
 import React from 'react'
+import Container from 'react-bootstrap/Container'
 
 function SignUp() {
     return (
-        <div>
-            <h1>Sign Up and get started</h1>
-        </div>
+        <Container>
+            <div>
+                <h3>Sign Up and get started</h3>
+            </div>
+        </Container>
     )
 }
 
