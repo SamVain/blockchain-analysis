@@ -13,8 +13,8 @@ const tablePropsInit = {
       { key: 'DateTime', title: 'DateTime', dataType: DataType.String, width: 50  },
       { key: 'ValueIn', title: 'ValueIn', dataType: DataType.String, width: 50  },
       { key: 'ValueOut', title: 'ValueOut', dataType: DataType.String, width: 50  },
-      { key: 'ValueIn1', title: 'ValueIn1', dataType: DataType.Number, width: 50  },
-      { key: 'ValueOut1', title: 'ValueOut1', dataType: DataType.Number, width: 50  },
+      { key: 'ValueIn1', title: 'ValueIn1', dataType: DataType.Number, visible: false  },
+      { key: 'ValueOut1', title: 'ValueOut1', dataType: DataType.Number, visible: false  },
       ],
       paging: {
         enabled: true,
@@ -122,33 +122,18 @@ function DataView() {
                 BTC: {btc}
             </div>
 
-            <div className='top-element'>
-                <FilterControl {...{fields, groups, filterValue,  onFilterValueChanged: onFilterChanged}}/>
-            </div>
+            <div class="container">
+                <div className='top-element'>
+                    <FilterControl {...{fields, groups, filterValue,  onFilterValueChanged: onFilterChanged}}/>
+                </div>
 
-            Paging position:{" "}
-            <select
-                value={tableProps.paging?.position}
-                    onChange={e =>
-                        changeTableProps({
-                            ...tableProps,
-                            paging: { ...tableProps.paging, position: e.target.value }
-                        })
-                    }
-                    style={{ marginBottom: 20 }}
-                >
-                <option value={PagingPosition.Bottom}>Bottom</option>
-                <option value={PagingPosition.Top}>Top</option>
-                <option value={PagingPosition.TopAndBottom}>TopAndBottom</option>
-            </select>
-
-
-            <div className="remote-data-demo">
-                <Table 
-                {...tableProps} 
-                dispatch={dispatch} 
-                extendedFilter={(data) => filterData(data, filterValue)}
-                />
+                <div className="remote-data-demo">
+                    <Table 
+                    {...tableProps} 
+                    dispatch={dispatch} 
+                    extendedFilter={(data) => filterData(data, filterValue)}
+                    />
+                </div>
             </div>
         </>
     );
