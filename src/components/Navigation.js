@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
@@ -16,7 +17,7 @@ function Navigation() {
             alt="logo" 
             width="30"
             height="30"/>           
-            Block Chain Analyser
+            <span className="TitlePadding">Blockchain Visualizer</span>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
@@ -24,6 +25,7 @@ function Navigation() {
               <Nav.Link as={Link} to="/">Home</Nav.Link>
               <Nav.Link as={Link} to="/dataview">Data</Nav.Link>
               <Nav.Link as={Link} to="/liveview">Live</Nav.Link>
+              <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>
               <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
               <Nav.Link as={Link} to="/about">About</Nav.Link>
               <Nav.Link as={Link} to="/signin">Sign In</Nav.Link>

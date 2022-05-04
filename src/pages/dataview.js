@@ -1,6 +1,6 @@
 
 import "ka-table/style.scss";
-import "./style.scss";
+//import "../style.scss";
 
 import React, { useState } from "react";
 
@@ -16,9 +16,10 @@ import Container from 'react-bootstrap/Container'
 const tablePropsInit = {
     columns: [
       { key: 'Hash', title: 'Hash', dataType: DataType.String, width: 100 },
-      { key: 'DateTime', title: 'DateTime', dataType: DataType.String, width: 50  },
-      { key: 'ValueIn', title: 'ValueIn', dataType: DataType.String, width: 50  },
-      { key: 'ValueOut', title: 'ValueOut', dataType: DataType.String, width: 50  },
+      { key: 'DateTime', title: 'DateTime', dataType: DataType.String, width: 25  },
+      { key: 'Btc', title: 'Btc', dataType: DataType.String, width: 25  },
+      { key: 'ValueIn', title: 'ValueIn', dataType: DataType.String, width: 25  },
+      { key: 'ValueOut', title: 'ValueOut', dataType: DataType.String, width: 25  },
       { key: 'ValueIn1', title: 'ValueIn1', dataType: DataType.Number, visible: false  },
       { key: 'ValueOut1', title: 'ValueOut1', dataType: DataType.Number, visible: false  },
       ],
@@ -80,39 +81,20 @@ const tablePropsInit = {
 
 function DataView() {
 
-
     const [tableProps, changeTableProps] = useState(tablePropsInit);
-    const [btc, setBtc] = useState(0);
-  
+
     const dispatch = async action => {
-  
   
       changeTableProps(prevState => kaReducer(prevState, action));
   
       if (action.type === ActionType.LoadData) {
-  
-          await fetch('https://localhost:44334/api/bitcoin/getbtcvalue', {
-              method: 'GET',
-              headers: {}
-          })
+
+            await fetch('https://localhost:44334/api/bitcoin/getshortdata', {
+                    method: 'GET',
+                    headers: {},
+                })
           .then(response => response.json())
-          .then(data => { 
-  
-              setBtc(data);
-  
-              return fetch('https://localhost:44334/api/bitcoin/getshortdata', {
-                      method: 'POST',
-                      headers: {
-                      "Content-Type": "application/json"
-                      },
-                      body: JSON.stringify(data)
-                  });
-          })
-          .then(response => response.json())
-          .then(data => { 
-  
-              dispatch(updateData(data)); 
-          })            
+          .then(data => dispatch(updateData(data)))            
           .catch(err => console.log("err:", err))
       } 
     };
@@ -124,9 +106,6 @@ function DataView() {
 
     return (
         <Container>
-            <div>
-                BTC: {btc}
-            </div>
 
             <div class="container">
                 <div className='top-element'>
