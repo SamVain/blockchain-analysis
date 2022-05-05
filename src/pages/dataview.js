@@ -12,17 +12,25 @@ import { ActionType, DataType, SortingMode, PagingPosition } from "ka-table/enum
 import { filterData } from '../filterData';
 import Container from 'react-bootstrap/Container'
 
+const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 
 const tablePropsInit = {
     columns: [
       { key: 'Hash', title: 'Hash', dataType: DataType.String, width: 100 },
-      { key: 'DateTime', title: 'DateTime', dataType: DataType.String, width: 25  },
-      { key: 'Btc', title: 'Btc', dataType: DataType.String, width: 25  },
-      { key: 'ValueIn', title: 'ValueIn', dataType: DataType.String, width: 25  },
-      { key: 'ValueOut', title: 'ValueOut', dataType: DataType.String, width: 25  },
-      { key: 'ValueIn1', title: 'ValueIn1', dataType: DataType.Number, visible: false  },
-      { key: 'ValueOut1', title: 'ValueOut1', dataType: DataType.Number, visible: false  },
+      { key: 'DateTime', title: 'Date & Time', dataType: DataType.String, width: 35  },
+      { key: 'Btc', title: 'Bitcoin Price (USD)', dataType: DataType.String, width: 25  },
+      { key: 'Bitcoin', title: 'Bitcoin', dataType: DataType.Number, width: 25  },
+      { key: 'USD', title: 'USD', dataType: DataType.Number, width: 25  },
+
       ],
+      format: ({ column, value }) => {
+        if (column.key === 'USD'){
+          return formatter.format(value);
+        }
+        if (column.key === 'Btc'){
+            return formatter.format(value);
+        }
+      },
       paging: {
         enabled: true,
         pageIndex: 0,
@@ -37,8 +45,8 @@ const tablePropsInit = {
 
     const fields = [{
 
-        caption: 'ValueIn1',
-        name: 'ValueIn1',
+        caption: 'Bitcoin',
+        name: 'Bitcoin',
         operators: [{
             caption: 'Equals',
             name: '=',
@@ -69,7 +77,7 @@ const tablePropsInit = {
     groupName: 'and',
     items: [
         {
-            field: 'ValueIn1',
+            field: 'Bitcoin',
             key: '1',
             operator: '>',
             value: '0',
@@ -106,7 +114,7 @@ function DataView() {
 
     return (
         <Container>
-
+            <div style={Header}>Captured Data</div>
             <div class="container">
                 <div className='top-element'>
                     <FilterControl {...{fields, groups, filterValue,  onFilterValueChanged: onFilterChanged}}/>
@@ -123,5 +131,12 @@ function DataView() {
         </Container>
     );
 };
+
+const Header = {
+    padding: "10px 20px",
+    textAlign: "center",
+    color: "black",
+    fontSize: "22px"
+   }
 
 export default DataView;

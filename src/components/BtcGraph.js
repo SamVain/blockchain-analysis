@@ -45,7 +45,7 @@ function BtcGraph() {
 
   return (
     <>
-      <div>BTC Graph</div>
+      <div style={Header}>Bitcoin price (USD)</div>
       <LineChart
         width={1200}
         height={800}
@@ -79,12 +79,19 @@ function BtcGraph() {
         <Line 
           type="monotone" 
           dataKey="btc" 
-          stroke="#82ca9d" 
-          strokeWidth={3}
-          activeDot={{ r: 5 }} />
+          stroke="#F2A900" 
+          strokeWidth={3} 
+          dot={{r:0}}/>
 
       </LineChart>
     </>
   )}
 
+  const Header = {
+    padding: "10px 20px",
+    textAlign: "center",
+    color: "black",
+    fontSize: "22px"
+   }
+    
   export default BtcGraph;
