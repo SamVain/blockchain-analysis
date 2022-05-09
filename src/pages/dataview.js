@@ -97,7 +97,7 @@ function DataView() {
   
       if (action.type === ActionType.LoadData) {
 
-            await fetch('https://localhost:44334/api/bitcoin/getshortdata', {
+            await fetch('https://localhost:44388/api/mongodb/getshortdata', {
                     method: 'GET',
                     headers: {},
                 })

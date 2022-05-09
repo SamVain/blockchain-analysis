@@ -11,7 +11,7 @@ function BtcGraph() {
 
   const fetchBtc = async () => {
  
-      await fetch('https://localhost:44334/api/bitcoin/getbtcdata', {
+      await fetch('https://localhost:44388/api/mongodb/getbtcdata', {
 
             method: 'GET',
             headers: {}

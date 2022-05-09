@@ -7,7 +7,7 @@ const LiveView = (props) => {
   const ws = useRef(null);
 
   const endPoint = useRef('wss://ws.blockchain.info/inv');
-  const converterEndpoint = useRef('https://localhost:44334/api/bitcoin/getbtcvalue');
+  const converterEndpoint = useRef('https://localhost:44388/api/mongodb/getbtcvalue');
   const interval = useRef(500);
   
   const [gotbtc, setGotBtc] = useState(false);
