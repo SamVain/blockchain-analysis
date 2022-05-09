@@ -16,18 +16,18 @@ const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 
 
 const tablePropsInit = {
     columns: [
-      { key: 'Hash', title: 'Hash', dataType: DataType.String, width: 100 },
-      { key: 'DateTime', title: 'Date & Time', dataType: DataType.String, width: 35  },
-      { key: 'Btc', title: 'Bitcoin Price (USD)', dataType: DataType.String, width: 25  },
-      { key: 'Bitcoin', title: 'Bitcoin', dataType: DataType.Number, width: 25  },
-      { key: 'USD', title: 'USD', dataType: DataType.Number, width: 25  },
+      { key: 'hash', title: 'Hash', dataType: DataType.String, width: 100 },
+      { key: 'datetime', title: 'Date & Time', dataType: DataType.String, width: 35  },
+      { key: 'btc', title: 'Bitcoin Price (USD)', dataType: DataType.String, width: 25  },
+      { key: 'bitcoin', title: 'Bitcoin', dataType: DataType.Number, width: 25  },
+      { key: 'usd', title: 'USD', dataType: DataType.Number, width: 25  },
 
       ],
       format: ({ column, value }) => {
-        if (column.key === 'USD'){
+        if (column.key === 'usd'){
           return formatter.format(value);
         }
-        if (column.key === 'Btc'){
+        if (column.key === 'btc'){
             return formatter.format(value);
         }
       },
@@ -40,13 +40,13 @@ const tablePropsInit = {
       },
       singleAction: loadData(),
       sortingMode: SortingMode.Single,
-      rowKeyField: "Id"
+      rowKeyField: "id"
     }; 
 
     const fields = [{
 
         caption: 'Bitcoin',
-        name: 'Bitcoin',
+        name: 'bitcoin',
         operators: [{
             caption: 'Equals',
             name: '=',
@@ -77,7 +77,7 @@ const tablePropsInit = {
     groupName: 'and',
     items: [
         {
-            field: 'Bitcoin',
+            field: 'bitcoin',
             key: '1',
             operator: '>',
             value: '0',
@@ -102,9 +102,17 @@ function DataView() {
                     headers: {},
                 })
           .then(response => response.json())
-          .then(data => dispatch(updateData(data)))            
-          .catch(err => console.log("err:", err))
-      } 
+          .then(data => {
+
+            dispatch(updateData(data));
+
+          })            
+          .catch(err => {
+              
+            console.log("err:", err);
+
+          })
+        } 
     };
   
     const [filterValue, changeFilter] = useState(filter);
