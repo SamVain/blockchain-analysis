@@ -1,0 +1,26 @@
+.hash {
+    font-family: Cascadia Mono, Lucida Console, Courier New;
+    outline: none;
+    text-decoration: none;
+    padding: 2px 1px 0;
+  }
+  
+.hash:link {
+    color: #F2A900;
+  }
+  
+.hash:visited {
+    color: #F2A900;
+  }
+  
+.hash:focus {
+    border-bottom: 1px solid;
+  }
+  
+.hash:hover {
+    border-bottom: 1px solid; 
+  }
+  
+.hash:active {
+    color: #F2A900;
+  }

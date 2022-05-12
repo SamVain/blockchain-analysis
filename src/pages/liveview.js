@@ -1,11 +1,10 @@
 import React, {useState, useRef, useEffect} from 'react';
-import { Container, Row, Col } from 'reactstrap';
-import { Button} from 'react-bootstrap';
+import { Container } from 'reactstrap';
 
 const LiveView = (props) => {
-
+  
   const ws = useRef(null);
-
+ 
   const endPoint = useRef('wss://ws.blockchain.info/inv');
   const converterEndpoint = useRef('https://localhost:44388/api/mongodb/getbtcvalue');
   const interval = useRef(500);
@@ -97,9 +96,8 @@ const LiveView = (props) => {
 
   return (
     <Container> 
-      <Row>
-        <Col className="conversion py-3" >1 BTC = {formatter.format(btc)}</Col>
-      </Row>
+      <div style={Header}>Live Data</div>
+      <div className="conversion py-3" >Bitcoin price (USD) = {formatter.format(btc)}</div>
       <div className="table-responsive">
         <table className="table align-middle table-striped table-hover">
           <thead>
@@ -131,6 +129,11 @@ var stylingObject = {
     fontFamily: "Courier"
   }
 }
-
+const Header = {
+  padding: "10px 5px",
+  textAlign: "left",
+  color: "black",
+  fontSize: "22px"
+ }
 
 export default LiveView;

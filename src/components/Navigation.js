@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container'
 import { Link } from 'react-router-dom';
 import LogoName from '../imgs/logo.svg'
 
-function Navigation() {
+const Navigation = () => {
     return (
     <div>
       <Navbar bg="primary" variant="dark" expand="lg">
@@ -23,13 +23,9 @@ function Navigation() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
               <Nav.Link as={Link} to="/">Home</Nav.Link>
+              <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>              
               <Nav.Link as={Link} to="/dataview">Data</Nav.Link>
               <Nav.Link as={Link} to="/liveview">Live</Nav.Link>
-              <Nav.Link as={Link} to="/dashboard">Dashboard</Nav.Link>
-              {/* <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
-              <Nav.Link as={Link} to="/about">About</Nav.Link>
-              <Nav.Link as={Link} to="/signin">Sign In</Nav.Link>
-              <Nav.Link as={Link} to="/signup">Sign Up</Nav.Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>        

@@ -6,10 +6,7 @@ import Home from './pages';
 import DataView from './pages/dataview';
 import LiveView from './pages/liveview';
 import Dashboard from './pages/dashboard';
-import About from './pages/about';
-import Contact from './pages/contact';
-import SignUp from './pages/signup';
-import SignIn from './pages/signin';
+
 
 function App() {
   return (
@@ -17,13 +14,9 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" exact element={<Home/>} />
+        <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/dataview" exact element={<DataView/>} />
         <Route path="/liveview" exact element={<LiveView/>} />
-        <Route path="/dashboard" element={<Dashboard/>} />
-        <Route path="/about" element={<About/>} />
-        <Route path="/contact" element={<Contact/>} />
-        <Route path="/signin" element={<SignIn/>} />
-        <Route path="/sign-up" element={<SignUp/>} />
       </Routes>
     </>
   );

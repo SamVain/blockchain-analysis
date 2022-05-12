@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect, useRef } from "react";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import CustomizedDot from './CustomizedDot'
+import CustomizedTooltip from './CustomizedTooltip'
 
 function BtcGraph() {
 
@@ -58,38 +60,47 @@ function BtcGraph() {
         }}>
           
         <CartesianGrid 
-          strokeDasharray="3 3"/>
+          strokeDasharray="3 3"
+          />
 
         <XAxis 
           dataKey="timestamp" 
           angle={-45} 
-          textAnchor="end"/>
+          textAnchor="end"
+          />
         
         <YAxis 
           type="number" 
-          domain={['auto', 'auto']} />
+          domain={['auto', 'auto']} 
+          />
         
-        <Tooltip />
+        <Tooltip  
+          content={<CustomizedTooltip />}
+          />
         
         <Legend 
           layout="vetical" 
           verticalAlign="top" 
-          align="right" />
+          align="right" 
+          />
       
         <Line 
           type="monotone" 
-          dataKey="btc" 
+          dataKey="usd" 
           stroke="#F2A900" 
           strokeWidth={3} 
-          dot={{r:0}}/>
+          isAnimationActive={false}
+          dot={{r: 0}}
+          activeDot={<CustomizedDot/>}
+          />
 
       </LineChart>
     </>
   )}
 
   const Header = {
-    padding: "10px 20px",
-    textAlign: "center",
+    padding: "10px 5px",
+    textAlign: "left",
     color: "black",
     fontSize: "22px"
    }

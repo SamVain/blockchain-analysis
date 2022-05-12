@@ -1,11 +1,12 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container'
+import Welcome from '../components/Welcome'
 
 const Home = () => {
   return (   
     <Container>
       <div>
-        <h3>Welcome to our website!</h3>
+        <Welcome />
       </div>
     </Container> 
   );

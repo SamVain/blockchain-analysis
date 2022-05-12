@@ -1,6 +1,6 @@
 
 import "ka-table/style.scss";
-//import "../style.scss";
+import "../pages/dataview.css";
 
 import React, { useState } from "react";
 
@@ -14,13 +14,23 @@ import Container from 'react-bootstrap/Container'
 
 const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 
+function LinkFormatter(value) {
+
+    var href = "https://www.blockchain.com/btc/tx/" + value
+
+    return (
+        
+        <a className="hash" href={href} target="_blank" rel="noreferrer">{value}</a>
+    )
+}
+
 const tablePropsInit = {
     columns: [
       { key: 'hash', title: 'Hash', dataType: DataType.String, width: 100 },
       { key: 'datetime', title: 'Date & Time', dataType: DataType.String, width: 35  },
       { key: 'btc', title: 'Bitcoin Price (USD)', dataType: DataType.String, width: 25  },
-      { key: 'bitcoin', title: 'Bitcoin', dataType: DataType.Number, width: 25  },
-      { key: 'usd', title: 'USD', dataType: DataType.Number, width: 25  },
+      { key: 'bitcoin', title: 'Bitcoin(s) Out', dataType: DataType.Number, width: 25  },
+      { key: 'usd', title: 'Bitcoin(s) Out Value (USD)', dataType: DataType.Number, width: 25  },
 
       ],
       format: ({ column, value }) => {
@@ -29,6 +39,9 @@ const tablePropsInit = {
         }
         if (column.key === 'btc'){
             return formatter.format(value);
+        }
+        if (column.key === 'hash'){
+            return LinkFormatter(value);
         }
       },
       paging: {
@@ -141,10 +154,11 @@ function DataView() {
 };
 
 const Header = {
-    padding: "10px 20px",
-    textAlign: "center",
+    padding: "10px 5px",
+    textAlign: "left",
     color: "black",
     fontSize: "22px"
    }
+
 
 export default DataView;
